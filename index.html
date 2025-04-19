@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Jogo Musical - Fase 1</title>
+    <style>
+        body { font-family: Arial; background-color: #f0f8ff; margin: 0; padding: 0; }
+        #game-container { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+        #staff { background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Music_staff_empty.svg/1024px-Music_staff_empty.svg.png') no-repeat center; background-size: contain; height: 60vh; margin-top: 5vh; }
+        .draggable { width: 60px; height: 60px; position: absolute; cursor: move; }
+        .note { border-radius: 50%; background-color: #ffcccb; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; }
+        .clave { background-color: #add8e6; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="staff"></div>
+        <div id="claveSol" class="draggable clave" style="top: 10px; left: 10px;">Sol</div>
+        <div id="claveFa" class="draggable clave" style="top: 80px; left: 10px;">Fá</div>
+        <div id="claveDo" class="draggable clave" style="top: 150px; left: 10px;">Dó</div>
+
+        <div id="notaDo" class="draggable note" style="top: 10px; left: 100px;" onclick="playNote('C4')">Dó</div>
+        <div id="notaRe" class="draggable note" style="top: 80px; left: 100px;" onclick="playNote('D4')">Ré</div>
+        <div id="notaMi" class="draggable note" style="top: 150px; left: 100px;" onclick="playNote('E4')">Mi</div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script>
+        const notes = {
+            'C4': 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_0cf3e4c3d2.mp3?filename=note-c4-94500.mp3',
+            'D4': 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_feb75dbe0f.mp3?filename=note-d4-94501.mp3',
+            'E4': 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_aa4edc9c97.mp3?filename=note-e4-94502.mp3'
+        };
+
+        function playNote(note) {
+            const audio = document.getElementById('audioPlayer');
+            audio.src = notes[note];
+            audio.play();
+        }
+
+        function dragElement(elmnt) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            elmnt.onmousedown = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                document.onmousemove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+            }
+
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+
+        document.querySelectorAll('.draggable').forEach(dragElement);
+    </script>
+</body>
+</html>
