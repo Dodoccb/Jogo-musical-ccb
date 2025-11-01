@@ -1,0 +1,532 @@
+{
+  "Fase 1 – Teoria básica": [
+    {
+      "numero": 1,
+      "pergunta": "O que é música?",
+      "resposta": "Música é a arte de expressar sentimentos por meio de sons",
+      "referencia": "MSA pág. 3"
+    },
+    {
+      "numero": 2,
+      "pergunta": "O que é som?",
+      "resposta": "Som é tudo o que ouvimos.",
+      "referencia": "MSA pág. 4"
+    },
+    {
+      "numero": 3,
+      "pergunta": "Quais são as propriedades do som?",
+      "resposta": "Altura, duração, intensidade e timbre.",
+      "referencia": "MSA pág. 5"
+    },
+    {
+      "numero": 4,
+      "pergunta": "O que são notas musicais?",
+      "resposta": "Dó, Ré, Mi, Fá, Sol, Lá e Si.",
+      "referencia": "MSA pág. 6"
+    },
+    {
+      "numero": 5,
+      "pergunta": "O que são figuras musicais?",
+      "resposta": "Símbolos que indicam a duração dos sons.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 6,
+      "pergunta": "O que é pausa musical?",
+      "resposta": "Sinal que indica silêncio.",
+      "referencia": "MSA pág. 8"
+    },
+    {
+      "numero": 7,
+      "pergunta": "Qual a figura musical equivalente ao nº 1?",
+      "resposta": "Semibreve.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 8,
+      "pergunta": "Qual a figura musical equivalente ao nº 2?",
+      "resposta": "Mínima.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 9,
+      "pergunta": "Qual a figura musical equivalente ao nº 4?",
+      "resposta": "Semínima.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 10,
+      "pergunta": "Qual a figura musical equivalente ao nº 8?",
+      "resposta": "Colcheia.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 11,
+      "pergunta": "Qual a figura musical equivalente ao nº 16?",
+      "resposta": "Semicolcheia.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 12,
+      "pergunta": "Qual a figura musical equivalente ao nº 32?",
+      "resposta": "Fusa.",
+      "referencia": "MSA pág. 7"
+    },
+    {
+      "numero": 13,
+      "pergunta": "Qual a figura musical equivalente ao nº 64?",
+      "resposta": "Semifusa.",
+      "referencia": "MSA pág. 7"
+    }
+  ],
+  "Fase 2 – Escalas e tons": [
+    {
+      "numero": 14,
+      "pergunta": "O que é uma escala musical?",
+      "resposta": "Sequência ordenada de sons, ascendente ou descendente.",
+      "referencia": "MSA pág. 12"
+    },
+    {
+      "numero": 15,
+      "pergunta": "Qual é a sequência da escala maior natural?",
+      "resposta": "Tom – Tom – Semitom – Tom – Tom – Tom – Semitom.",
+      "referencia": "MSA pág. 13"
+    },
+    {
+      "numero": 16,
+      "pergunta": "Qual é a escala natural de Dó?",
+      "resposta": "Dó – Ré – Mi – Fá – Sol – Lá – Si – Dó.",
+      "referencia": "MSA pág. 14"
+    },
+    {
+      "numero": 17,
+      "pergunta": "O que é um tom?",
+      "resposta": "Intervalo formado por dois semitons.",
+      "referencia": "MSA pág. 15"
+    },
+    {
+      "numero": 18,
+      "pergunta": "O que é um semitom?",
+      "resposta": "Menor intervalo entre dois sons na música ocidental.",
+      "referencia": "MSA pág. 16"
+    },
+    {
+      "numero": 19,
+      "pergunta": "Quantos tons há em uma oitava?",
+      "resposta": "Cinco tons e dois semitons.",
+      "referencia": "MSA pág. 17"
+    },
+    {
+      "numero": 20,
+      "pergunta": "Quantas figuras musicais existem? E quais são?",
+      "resposta": "Sete figuras: Semibreve, Mínima, Semínima, Colcheia, Semicolcheia, Fusa, Semifusa.",
+      "referencia": "MSA pág. 17"
+    }
+  ],
+  "Fase 3 – Intervalos e armaduras": [
+    {
+      "numero": 21,
+      "pergunta": "O que é um intervalo?",
+      "resposta": "Distância entre dois sons.",
+      "referencia": "MSA pág. 21"
+    },
+    {
+      "numero": 22,
+      "pergunta": "Como são classificados os intervalos?",
+      "resposta": "Melódico e harmônico.",
+      "referencia": "MSA pág. 22"
+    },
+    {
+      "numero": 23,
+      "pergunta": "O que é uma armadura de clave?",
+      "resposta": "Conjunto de sustenidos ou bemóis no início do pentagrama, após a clave.",
+      "referencia": "MSA pág. 23"
+    },
+    {
+      "numero": 24,
+      "pergunta": "Qual é a função da armadura de clave?",
+      "resposta": "Indicar o tom da música.",
+      "referencia": "MSA pág. 24"
+    },
+    {
+      "numero": 25,
+      "pergunta": "O que é um intervalo de oitava?",
+      "resposta": "Intervalo entre duas notas de mesmo nome, com duplicação do som.",
+      "referencia": "MSA pág. 25"
+    },
+    {
+      "numero": 26,
+      "pergunta": "Quantos sustenidos há no tom de Sol maior?",
+      "resposta": "Um sustenido (Fá#).",
+      "referencia": "MSA pág. 26"
+    }
+  ],
+  "Fase 4 – Compassos e fórmulas de compasso": [
+    {
+      "numero": 27,
+      "pergunta": "O que é um compasso?",
+      "resposta": "Divisão do tempo musical em partes iguais.",
+      "referencia": "MSA pág. 29"
+    },
+    {
+      "numero": 28,
+      "pergunta": "O que é uma fórmula de compasso?",
+      "resposta": "Sinal que indica quantos tempos há em cada compasso e qual figura vale um tempo.",
+      "referencia": "MSA pág. 30"
+    },
+    {
+      "numero": 29,
+      "pergunta": "O que indica o número superior da fórmula de compasso?",
+      "resposta": "Quantidade de tempos por compasso.",
+      "referencia": "MSA pág. 31"
+    },
+    {
+      "numero": 30,
+      "pergunta": "O que indica o número inferior da fórmula de compasso?",
+      "resposta": "Figura que representa um tempo.",
+      "referencia": "MSA pág. 32"
+    },
+    {
+      "numero": 31,
+      "pergunta": "O que é barra de compasso?",
+      "resposta": "Linha vertical que separa os compassos.",
+      "referencia": "MSA pág. 33"
+    },
+    {
+      "numero": 32,
+      "pergunta": "O que é barra final?",
+      "resposta": "Linha dupla no final da música.",
+      "referencia": "MSA pág. 34"
+    }
+  ],
+  "Fase 5 – Claves e leitura musical": [
+    {
+      "numero": 33,
+      "pergunta": "O que é uma clave?",
+      "resposta": "Sinal que indica o nome das notas nas linhas e espaços do pentagrama.",
+      "referencia": "MSA pág. 37"
+    },
+    {
+      "numero": 34,
+      "pergunta": "Quais são as claves mais usadas?",
+      "resposta": "Clave de Sol, Clave de Fá e Clave de Dó.",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 35,
+      "pergunta": "Qual é a clave usada para instrumentos agudos?",
+      "resposta": "Clave de Sol.",
+      "referencia": "MSA pág. 39"
+    },
+    {
+      "numero": 36,
+      "pergunta": "Qual é a clave usada para instrumentos graves?",
+      "resposta": "Clave de Fá.",
+      "referencia": "MSA pág. 40"
+    },
+    {
+      "numero": 37,
+      "pergunta": "Qual a nota inscrita na 1ª linha na sua clave?",
+      "resposta": "Mi (Clave de Sol) / Sol (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 38,
+      "pergunta": "Qual a nota inscrita no 4º espaço na sua clave?",
+      "resposta": "Mi (Clave de Sol) / Sol (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 39,
+      "pergunta": "Qual a nota inscrita na 2ª linha na sua clave?",
+      "resposta": "Sol (Clave de Sol) / Si (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 40,
+      "pergunta": "Qual a nota inscrita no 3º espaço na sua clave?",
+      "resposta": "Dó (Clave de Sol) / Mi (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 41,
+      "pergunta": "Qual a nota inscrita na 4ª linha na sua clave?",
+      "resposta": "Ré (Clave de Sol) / Fá (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 42,
+      "pergunta": "Qual a nota inscrita no 2º espaço na sua clave?",
+      "resposta": "Lá (Clave de Sol) / Dó (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 43,
+      "pergunta": "Qual a nota inscrita na 3ª linha na sua clave?",
+      "resposta": "Si (Clave de Sol) / Ré (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 44,
+      "pergunta": "Qual a nota inscrita no 1º espaço na sua clave?",
+      "resposta": "Fá (Clave de Sol) / Lá (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 45,
+      "pergunta": "Qual a nota inscrita na 1ª linha suplementar inferior na sua clave?",
+      "resposta": "Dó (Clave de Sol) / Mi (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 46,
+      "pergunta": "Qual a nota inscrita na 1ª linha suplementar superior na sua clave?",
+      "resposta": "Sol (Clave de Sol) / Si (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 47,
+      "pergunta": "Qual a nota inscrita na 5ª linha na sua clave?",
+      "resposta": "Fá (Clave de Sol) / Lá (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 48,
+      "pergunta": "Qual a nota inscrita no 1º espaço suplementar superior na sua clave?",
+      "resposta": "Lá (Clave de Sol) / Dó (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 49,
+      "pergunta": "Qual a nota inscrita no 1º espaço suplementar inferior na sua clave?",
+      "resposta": "Ré (Clave de Sol) / Fá (Clave de Fá)",
+      "referencia": "MSA pág. 38"
+    },
+    {
+      "numero": 50,
+      "pergunta": "Qual linha representa o Dó na clave de Sol?",
+      "resposta": "Primeira linha suplementar abaixo do pentagrama.",
+      "referencia": "MSA pág. 41"
+    },
+    {
+      "numero": 51,
+      "pergunta": "Quantas linhas tem o pentagrama?",
+      "resposta": "Cinco linhas e quatro espaços.",
+      "referencia": "MSA pág. 42"
+    }
+  ],
+  "Fase 6 – Expressão e dinâmica": [
+    {
+      "numero": 52,
+      "pergunta": "O que é andamento?",
+      "resposta": "Velocidade com que a música deve ser executada.",
+      "referencia": "MSA pág. 46"
+    },
+    {
+      "numero": 53,
+      "pergunta": "O que significa forte (f)?",
+      "resposta": "Executar com intensidade forte.",
+      "referencia": "MSA pág. 47"
+    },
+    {
+      "numero": 54,
+      "pergunta": "O que significa piano (p)?",
+      "resposta": "Executar com suavidade.",
+      "referencia": "MSA pág. 48"
+    },
+    {
+      "numero": 55,
+      "pergunta": "O que significa crescendo (<)?",
+      "resposta": "Aumentar gradualmente a intensidade.",
+      "referencia": "MSA pág. 49"
+    },
+    {
+      "numero": 56,
+      "pergunta": "O que significa decrescendo (>)?",
+      "resposta": "Diminuir gradualmente a intensidade.",
+      "referencia": "MSA pág. 50"
+    },
+    {
+      "numero": 57,
+      "pergunta": "O que são sinais de expressão?",
+      "resposta": "Indicações sobre a maneira de executar (andamento, dinâmica, etc.).",
+      "referencia": "MSA pág. 51"
+    }
+  ],
+  "Fase 7 – Atividades Práticas (Hinário CCB)": [
+    {
+      "numero": 58,
+      "pergunta": "Qual é a primeira nota do Hino 1?",
+      "resposta": "Dó maior.",
+      "referencia": "Hinário pág. 1"
+    },
+    {
+      "numero": 59,
+      "pergunta": "O Hino 4 “Grandioso és Tu” está em qual tom?",
+      "resposta": "Fá maior.",
+      "referencia": "Hinário pág. 8"
+    },
+    {
+      "numero": 60,
+      "pergunta": "O Hino 5 inicia com qual figura musical?",
+      "resposta": "Semínima.",
+      "referencia": "Hinário pág. 10"
+    },
+    {
+      "numero": 61,
+      "pergunta": "No Hino 10, quantos compassos há na primeira linha?",
+      "resposta": "Quatro compassos.",
+      "referencia": "Hinário pág. 16"
+    },
+    {
+      "numero": 62,
+      "pergunta": "O Hino 12 termina com qual nota na melodia principal?",
+      "resposta": "Dó.",
+      "referencia": "Hinário pág. 18"
+    },
+    {
+      "numero": 63,
+      "pergunta": "O Hino 14 tem fórmula de compasso de quanto?",
+      "resposta": "3/4.",
+      "referencia": "Hinário pág. 21"
+    },
+    {
+      "numero": 64,
+      "pergunta": "No Hino 20, qual é a clave usada na partitura principal?",
+      "resposta": "Clave de Sol.",
+      "referencia": "Hinário pág. 27"
+    },
+    {
+      "numero": 65,
+      "pergunta": "O Hino 23 começa com qual intervalo entre as duas primeiras notas?",
+      "resposta": "Terça maior.",
+      "referencia": "Hinário pág. 31"
+    },
+    {
+      "numero": 66,
+      "pergunta": "O Hino 30 está em qual tonalidade?",
+      "resposta": "Sol maior.",
+      "referencia": "Hinário pág. 38"
+    },
+    {
+      "numero": 67,
+      "pergunta": "O Hino 35 utiliza qual sinal de alteração na armadura de clave?",
+      "resposta": "Um sustenido (Fá#).",
+      "referencia": "Hinário pág. 42"
+    },
+    {
+      "numero": 68,
+      "pergunta": "O Hino 40 tem quantos tempos por compasso?",
+      "resposta": "Quatro tempos.",
+      "referencia": "Hinário pág. 48"
+    },
+    {
+      "numero": 69,
+      "pergunta": "O Hino 45 apresenta qual tipo de figura predominante?",
+      "resposta": "Colcheias.",
+      "referencia": "Hinário pág. 53"
+    },
+    {
+      "numero": 70,
+      "pergunta": "O Hino 50 está em qual andamento aproximado?",
+      "resposta": "Moderato.",
+      "referencia": "Hinário pág. 58"
+    },
+    {
+      "numero": 71,
+      "pergunta": "O Hino 52 tem qual nota como tônica?",
+      "resposta": "Lá.",
+      "referencia": "Hinário pág. 60"
+    },
+    {
+      "numero": 72,
+      "pergunta": "O Hino 60 utiliza pausa de qual valor no final de cada frase?",
+      "resposta": "Pausa de semínima.",
+      "referencia": "Hinário pág. 68"
+    },
+    {
+      "numero": 73,
+      "pergunta": "O Hino 70 começa em qual compasso e termina em qual?",
+      "resposta": "Começa em 4/4 e termina em 3/4.",
+      "referencia": "Hinário pág. 77"
+    },
+    {
+      "numero": 74,
+      "pergunta": "O Hino 85 termina com qual acorde?",
+      "resposta": "Dó maior.",
+      "referencia": "Hinário pág. 90"
+    },
+    {
+      "numero": 75,
+      "pergunta": "O Hino 90 contém notas pontuadas?",
+      "resposta": "Sim, semínimas pontuadas.",
+      "referencia": "Hinário pág. 95"
+    },
+    {
+      "numero": 76,
+      "pergunta": "No Hino 100, qual a diferença entre a melodia e o acompanhamento?",
+      "resposta": "A melodia conduz as notas principais; o acompanhamento faz a harmonia.",
+      "referencia": "Hinário pág. 104"
+    },
+    {
+      "numero": 77,
+      "pergunta": "O Hino 110 tem a presença de síncope?",
+      "resposta": "Sim, no final da segunda linha.",
+      "referencia": "Hinário pág. 113"
+    },
+    {
+      "numero": 78,
+      "pergunta": "O Hino 120 contém quais sinais de expressão?",
+      "resposta": "Crescendo e decrescendo.",
+      "referencia": "Hinário pág. 122"
+    },
+    {
+      "numero": 79,
+      "pergunta": "No Hino 130, qual é o tom relativo menor de Dó maior?",
+      "resposta": "Lá menor.",
+      "referencia": "Hinário pág. 131"
+    },
+    {
+      "numero": 80,
+      "pergunta": "O Hino 140 apresenta algum uso de fermata?",
+      "resposta": "Sim, no final da última nota.",
+      "referencia": "Hinário pág. 141"
+    },
+    {
+      "numero": 81,
+      "pergunta": "O Hino 150 tem quantos sustenidos na armadura?",
+      "resposta": "Dois sustenidos (Fá# e Dó#).",
+      "referencia": "Hinário pág. 150"
+    },
+    {
+      "numero": 82,
+      "pergunta": "No Hino 160, qual é o intervalo entre a primeira e segunda nota?",
+      "resposta": "Quinta justa.",
+      "referencia": "Hinário pág. 160"
+    },
+    {
+      "numero": 83,
+      "pergunta": "O Hino 170 tem alguma mudança de tonalidade?",
+      "resposta": "Sim, modula de Sol maior para Dó maior.",
+      "referencia": "Hinário pág. 170"
+    },
+    {
+      "numero": 84,
+      "pergunta": "O Hino 180 termina com qual tipo de cadência?",
+      "resposta": "Cadência perfeita.",
+      "referencia": "Hinário pág. 180"
+    },
+    {
+      "numero": 85,
+      "pergunta": "O Hino 190 utiliza qual símbolo de dinâmica no meio da música?",
+      "resposta": "Forte (f).",
+      "referencia": "Hinário pág. 190"
+    },
+    {
+      "numero": 86,
+      "pergunta": "O Hino 200 inicia em qual nota?",
+      "resposta": "Sol.",
+      "referencia": "Hinário pág. 200"
+    }
+  ]
+}

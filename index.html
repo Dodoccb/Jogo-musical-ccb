@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teoria Musical Divertida</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: #f7faff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #ffcc00;
+      color: #000;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+    nav {
+      background: #ffe680;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    nav button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background: #fff;
+      border: 2px solid #999;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .play-button {
+      background: #ff3b3b;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    section {
+      padding: 2rem;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+    th {
+      background: #e0e0e0;
+    }
+    .map-container {
+      background: url('mapa-jogo.png') no-repeat center top;
+      background-size: contain;
+      width: 100%;
+      height: 720px;
+      position: relative;
+    }
+    .fase {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.5rem;
+    }
+    .fase button {
+      background: #fff;
+      border: 2px solid #444;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+    .fase .cadeado {
+      font-size: 1rem;
+      margin-top: 5px;
+      color: #888;
+    }
+  </style>
+<script>
+  function openGamePopup() {
+    const popup = window.open("fase1.html", "Fase1", "width=800,height=600");
+    if (!popup || popup.closed || typeof popup.closed == 'undefined') {
+      alert("Por favor, habilite os pop-ups para continuar o jogo.");
+    }
+  }
+</script>
+
+</head>
+<body>
+  <header>
+    🎵 Teoria Musical Divertida 🎵
+  </header>
+  <nav>
+    <button onclick="showSection('figuras')">Figuras Musicais</button>
+    <button onclick="showSection('claves')">Claves Musicais</button>
+    <button onclick="showSection('notas')">Notas Musicais</button>
+    <button class="play-button" onclick="openGamePopup()">🎮 JOGAR</button>
+  </nav>
+
+  <section id="figuras" class="active">
+    <h2>Figuras Musicais</h2>
+    <p>A duração do som, a duração do silêncio e o ritmo musical são escritos com figuras musicais.</p>
+    <p><strong>Nota musical</strong> é a figura que representa o som.<br>
+       <strong>Pausa musical</strong> é a figura que representa o silêncio.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Figura de Som</th>
+          <th>Nome</th>
+          <th>Figura de Silêncio</th>
+          <th>Nome</th>
+          <th>Número de Equivalência</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="font-size: 2rem;">𝅝</td><td>Semibreve</td><td style="font-size: 2rem;">▇</td><td>Pausa de Semibreve</td><td>1</td></tr>
+        <tr><td style="font-size: 2rem;">𝅗𝅥</td><td>Mínima</td><td style="font-size: 2rem;">▂</td><td>Pausa de Mínima</td><td>2</td></tr>
+        <tr><td style="font-size: 2rem;">𝅘𝅥</td><td>Semínima</td><td style="font-size: 2rem;">𝄽</td><td>Pausa de Semínima</td><td>4</td></tr>
+        <tr><td style="font-size: 2rem;">𝅘𝅥𝅮</td><td>Colcheia</td><td style="font-size: 2rem;">𝄾</td><td>Pausa de Colcheia</td><td>8</td></tr>
+        <tr><td style="font-size: 2rem;">𝅘𝅥𝅯</td><td>Semicolcheia</td><td style="font-size: 2rem;">𝄿</td><td>Pausa de Semicolcheia</td><td>16</td></tr>
+        <tr><td style="font-size: 2rem;">𝅘𝅥𝅰</td><td>Fusa</td><td style="font-size: 2rem;">𝅀</td><td>Pausa de Fusa</td><td>32</td></tr>
+        <tr><td style="font-size: 2rem;">𝅘𝅥𝅱</td><td>Semifusa</td><td style="font-size: 2rem;">𝅁</td><td>Pausa de Semifusa</td><td>64</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="claves">
+    <h2>Claves Musicais</h2>
+    <p>As claves ajudam a identificar as notas no pentagrama. A mais usada é a Clave de Sol.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Gclef.svg" width="80" alt="Clave de Sol">
+  </section>
+
+  <section id="notas">
+    <h2>Notas Musicais</h2>
+    <ul>
+      <li>Dó – dominó 🎲</li>
+      <li>Ré – régua 📏</li>
+      <li>Mi – gato "Miau" 🐱</li>
+      <li>Fá – faca 🍴</li>
+      <li>Sol – sol ☀️</li>
+      <li>Lá – laço 🎀</li>
+      <li>Si – sino 🔔</li>
+    </ul>
+  </section>
+
+  <section id="jogo">
+    <h2>🗺️ Mapa do Jogo – Fases do Método MSA</h2>
+    <div class="map-container">
+      <div class="fase" style="top: 20%; left: 30%;">
+        <button>🎵</button><div class="cadeado">🔒</div>
+      </div>
+      <div class="fase" style="top: 63%; left: 40%;">
+        <button>🎵</button><div class="cadeado">🔒</div>
+      </div>
+      <div class="fase" style="top: 48%; left: 59%;">
+        <button>🎵</button><div class="cadeado">🔒</div>
+      </div>
+      <div class="fase" style="top: 34%; left: 45%;">
+        <button>🎵</button><div class="cadeado">🔒</div>
+      </div>
+      <div class="fase" style="top: 19%; left: 62%;">
+        <button>🎵</button><div class="cadeado">🔒</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
