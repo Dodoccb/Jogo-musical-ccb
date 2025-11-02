@@ -144,14 +144,49 @@
   </style>
 <script>
   function openGamePopup() {
-    const popup = window.open("fase1.html", "Fase1", "width=800,height=600");
-    if (!popup || popup.closed || typeof popup.closed == 'undefined') {
-      alert("Por favor, habilite os pop-ups para continuar o jogo.");
+    const audio = document.getElementById("audioFundo");
+    if (audio && !audio.paused) {
+      audio.pause(); // Pausa o som de fundo
     }
+
+    const popup = window.open("fase1.html", "_blank", "width=600,height=600");
+
+    // (Opcional) ao fechar o popup, volta a tocar:
+    const checkPopupClosed = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(checkPopupClosed);
+        audio.play(); // Retoma som quando popup fecha
+      }
+    }, 500);
   }
+
+  // Reproduz música quando o usuário clica em qualquer botão pela primeira vez
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById("audioFundo");
+    const buttons = document.querySelectorAll("button");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (audio && audio.paused) {
+          audio.play().catch(e => console.log("Autoplay bloqueado:", e));
+        }
+      });
+    });
+  });
+</script>
+
+
 </script>
 
 </head>
+
+<audio id="audioFundo" loop>
+  <source src="hino001.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
+
+
+
 <body>
   <header>
     🎵 Teoria Musical Divertida 🎵
