@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fase 2 - Jogo Musical</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #f0faff;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .pergunta {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .opcoes button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #fff;
+    }
+    .status {
+      margin-top: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+    }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎵 Fase 5</h1>
+    <div id="quiz">
+      <div id="pergunta" class="pergunta">Carregando pergunta...</div>
+      <div class="opcoes" id="opcoes"></div>
+    </div>
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    let perguntas = [];
+    let fase = "Fase 5";
+    let index = 0;
+    let acertos = 0;
+
+    async function carregarPerguntas() {
+      const res = await fetch('perguntas.json');
+      const data = await res.json();
+      perguntas = data[fase];
+      embaralhar(perguntas);
+      mostrarPergunta();
+    }
+
+    function mostrarPergunta() {
+      if (index >= perguntas.length) return verificarResultado();
+
+      const perguntaAtual = perguntas[index];
+      const perguntaEl = document.getElementById('pergunta');
+      const opcoesEl = document.getElementById('opcoes');
+      perguntaEl.textContent = perguntaAtual.pergunta;
+
+      const todas = perguntas.map(p => p.resposta);
+      const alternativas = gerarAlternativas(perguntaAtual.resposta, todas, index);
+
+      opcoesEl.innerHTML = '';
+      alternativas.forEach(alt => {
+        const btn = document.createElement('button');
+        btn.textContent = alt;
+        btn.onclick = () => {
+          if (alt === perguntaAtual.resposta) acertos++;
+          index++;
+          mostrarPergunta();
+        };
+        opcoesEl.appendChild(btn);
+      });
+    }
+
+    function gerarAlternativas(correta, todas, posicao) {
+      const proximas = todas.slice(Math.max(0, posicao - 5), posicao + 5).filter(r => r !== correta);
+      const aleatorias = [];
+      while (aleatorias.length < 3 && proximas.length > 0) {
+        const idx = Math.floor(Math.random() * proximas.length);
+        aleatorias.push(proximas.splice(idx, 1)[0]);
+      }
+      aleatorias.push(correta);
+      return embaralhar(aleatorias);
+    }
+
+    function embaralhar(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function verificarResultado() {
+      const total = perguntas.length;
+      const porcentagem = (acertos / total) * 100;
+      const statusEl = document.getElementById('status');
+      const quizEl = document.getElementById('quiz');
+      quizEl.classList.add('hidden');
+      if (porcentagem >= 90) {
+        statusEl.innerHTML = `✅ Parabéns! Você acertou ${acertos}/${total} e passou de fase!<br>Carregando próxima fase...`;
+        setTimeout(() => {
+          window.close();
+          window.open('fase6.html', 'Fase3', 'width=800,height=600');
+        }, 3000);
+      } else {
+        statusEl.innerHTML = `❌ Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%).<br>Você precisa tentar novamente.`;
+        setTimeout(() => window.close(), 4000);
+      }
+    }
+
+    carregarPerguntas();
+  </script>
+</body>
+</html>
