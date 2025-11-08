@@ -20,7 +20,7 @@
     },
     {
       "numero": 4,
-      "pergunta": "O que são notas musicais?",
+      "pergunta": "Quais são as notas musicais?",
       "resposta": "Dó, Ré, Mi, Fá, Sol, Lá e Si.",
       "referencia": "MSA pág. 6"
     },
@@ -95,7 +95,7 @@
     {
       "numero": 16,
       "pergunta": "Qual é a escala natural de Dó?",
-      "resposta": "Dó – Ré – Mi – Fá – Sol – Lá – Si – Dó.",
+      "resposta": "Dó – Ré – Mi – Fá – Sol – Lá – Si.",
       "referencia": "MSA pág. 14"
     },
     {
