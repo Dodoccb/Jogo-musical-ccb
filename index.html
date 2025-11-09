@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -43,6 +44,15 @@
       border: none;
       padding: 0.7rem 1.5rem;
       animation: pulse 1.5s infinite;
+    }
+    .ranking-button {
+      background: #3b83ff;
+      color: white;
+      font-weight: bold;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      padding: 0.7rem 1.2rem;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -98,105 +108,117 @@
       margin-top: 5px;
       color: #888;
     }
-
-    @media (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav button {
-    width: 90%;
-    max-width: 300px;
-    font-size: 1rem;
-  }
-
-  .map-container {
-    height: auto;
-    aspect-ratio: 9 / 16;
-    background-size: cover;
-  }
-
-  .fase {
-    font-size: 1.2rem;
-  }
-
-  .fase button {
-    width: 42px;
-    height: 42px;
-    font-size: 1.1rem;
-  }
-
-  .fase .cadeado {
-    font-size: 0.85rem;
-  }
-
-  section {
-    padding: 1rem;
-  }
-
-  th, td {
-    font-size: 1rem;
-    padding: 0.5rem;
-  }
-}
-
-  </style>
-<script>
-  function openGamePopup() {
-    const audio = document.getElementById("audioFundo");
-    if (audio && !audio.paused) {
-      audio.pause(); // Pausa o som de fundo
+    #nickname-container {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    #nickname {
+      font-size: 1rem;
+      padding: 0.5rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      width: 200px;
     }
 
-    const popup = window.open("fase1.html", "_blank", "width=600,height=600");
-
-    // (Opcional) ao fechar o popup, volta a tocar:
-    const checkPopupClosed = setInterval(() => {
-      if (popup.closed) {
-        clearInterval(checkPopupClosed);
-        audio.play(); // Retoma som quando popup fecha
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
       }
-    }, 500);
-  }
+      nav button {
+        width: 90%;
+        max-width: 300px;
+        font-size: 1rem;
+      }
+      .map-container {
+        height: auto;
+        aspect-ratio: 9 / 16;
+        background-size: cover;
+      }
+      .fase {
+        font-size: 1.2rem;
+      }
+      .fase button {
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+      }
+      .fase .cadeado {
+        font-size: 0.85rem;
+      }
+      section {
+        padding: 1rem;
+      }
+      th, td {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+    }
+  </style>
+  <script>
+    function openGamePopup() {
+      const nickname = document.getElementById("nickname").value.trim();
+      if (!nickname) {
+        alert("Digite seu apelido antes de jogar.");
+        return;
+      }
+      localStorage.setItem("apelido", nickname);
+      const audio = document.getElementById("audioFundo");
+      if (audio && !audio.paused) audio.pause();
 
-  // Reproduz música quando o usuário clica em qualquer botão pela primeira vez
-  window.addEventListener('DOMContentLoaded', () => {
-    const audio = document.getElementById("audioFundo");
-    const buttons = document.querySelectorAll("button");
+      const ultimaFase = localStorage.getItem("faseAtual") || "fase1.html";
+      const popup = window.open(ultimaFase, "JogoMusical", "width=600,height=600");
 
-    buttons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        if (audio && audio.paused) {
-          audio.play().catch(e => console.log("Autoplay bloqueado:", e));
+      const checkPopupClosed = setInterval(() => {
+        if (popup.closed) {
+          clearInterval(checkPopupClosed);
+          audio.play();
         }
+      }, 500);
+    }
+
+    function showSection(id) {
+      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const audio = document.getElementById("audioFundo");
+      const buttons = document.querySelectorAll("button");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          if (audio && audio.paused) {
+            audio.play().catch(e => console.log("Autoplay bloqueado:", e));
+          }
+        });
       });
+
+      const apelido = localStorage.getItem("apelido");
+      if (apelido) document.getElementById("nickname").value = apelido;
     });
-  });
-</script>
-
-
-</script>
-
+  </script>
 </head>
 
-<audio id="audioFundo" loop>
-  <source src="hino001.mp3" type="audio/mpeg">
-  Seu navegador não suporta áudio.
-</audio>
-
-
-
 <body>
-  <header>
-    🎵 Teoria Musical Divertida 🎵
-  </header>
+  <audio id="audioFundo" loop>
+    <source src="hino001.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <header>🎵 Teoria Musical Divertida 🎵</header>
+
   <nav>
     <button onclick="showSection('figuras')">Figuras Musicais</button>
     <button onclick="showSection('claves')">Claves Musicais</button>
     <button onclick="showSection('notas')">Notas Musicais</button>
     <button class="play-button" onclick="openGamePopup()">🎮 JOGAR</button>
+    <button class="ranking-button" onclick="window.open('ranking.html','_blank')">📊 RANKING</button>
   </nav>
+
+  <div id="nickname-container">
+    <label for="nickname">Digite seu apelido:</label><br />
+    <input type="text" id="nickname" placeholder="Ex: Dodô" />
+  </div>
 
   <section id="figuras" class="active">
     <h2>Figuras Musicais</h2>
@@ -206,11 +228,7 @@
     <table>
       <thead>
         <tr>
-          <th>Figura de Som</th>
-          <th>Nome</th>
-          <th>Figura de Silêncio</th>
-          <th>Nome</th>
-          <th>Número de Equivalência</th>
+          <th>Figura de Som</th><th>Nome</th><th>Figura de Silêncio</th><th>Nome</th><th>Número de Equivalência</th>
         </tr>
       </thead>
       <tbody>
@@ -228,7 +246,7 @@
   <section id="claves">
     <h2>Claves Musicais</h2>
     <p>As claves ajudam a identificar as notas no pentagrama. A mais usada é a Clave de Sol.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Gclef.svg" width="80" alt="Clave de Sol">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Gclef.svg" width="80" alt="Clave de Sol" />
   </section>
 
   <section id="notas">
@@ -243,38 +261,5 @@
       <li>Si – sino 🔔</li>
     </ul>
   </section>
-
-  <section id="jogo">
-    <h2>🗺️ Mapa do Jogo – Fases do Método MSA</h2>
-    <div class="map-container">
-      <div class="fase" style="top: 20%; left: 30%;">
-        <button>🎵</button><div class="cadeado">🔒</div>
-      </div>
-      <div class="fase" style="top: 63%; left: 40%;">
-        <button>🎵</button><div class="cadeado">🔒</div>
-      </div>
-      <div class="fase" style="top: 48%; left: 59%;">
-        <button>🎵</button><div class="cadeado">🔒</div>
-      </div>
-      <div class="fase" style="top: 34%; left: 45%;">
-        <button>🎵</button><div class="cadeado">🔒</div>
-      </div>
-      <div class="fase" style="top: 19%; left: 62%;">
-        <button>🎵</button><div class="cadeado">🔒</div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
 </body>
 </html>
-
-
-
-
-

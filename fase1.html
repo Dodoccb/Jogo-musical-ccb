@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fase 1 - Jogo Musical</title>
   <style>
     body {
@@ -55,16 +54,28 @@
 
   <script>
     let perguntas = [];
-    let fase = "Fase 1 – Teoria básica";
+    const faseNome = "Fase 1 – Teoria básica";
+    const faseNumero = 1;
     let index = 0;
     let acertos = 0;
+    const tempoInicio = Date.now();
+    const apelido = localStorage.getItem('apelidoMSA') || prompt("Digite seu apelido:");
+
+    if (!localStorage.getItem('apelidoMSA') && apelido) {
+      localStorage.setItem('apelidoMSA', apelido);
+    }
 
     async function carregarPerguntas() {
-      const res = await fetch('perguntas.json');
-      const data = await res.json();
-      perguntas = data[fase];
-      embaralhar(perguntas);
-      mostrarPergunta();
+      try {
+        const res = await fetch('perguntas.json');
+        const data = await res.json();
+        perguntas = data[faseNome];
+        embaralhar(perguntas);
+        mostrarPergunta();
+      } catch (e) {
+        document.getElementById('pergunta').textContent = "Erro ao carregar perguntas.";
+        console.error(e);
+      }
     }
 
     function mostrarPergunta() {
@@ -75,11 +86,9 @@
       const opcoesEl = document.getElementById('opcoes');
       perguntaEl.textContent = perguntaAtual.pergunta;
 
-      // Gera 3 alternativas aleatórias + 1 correta
       const todas = perguntas.map(p => p.resposta);
       const alternativas = gerarAlternativas(perguntaAtual.resposta, todas, index);
 
-      // Exibe as alternativas
       opcoesEl.innerHTML = '';
       alternativas.forEach(alt => {
         const btn = document.createElement('button');
@@ -113,16 +122,32 @@
     }
 
     function verificarResultado() {
+      const tempoGasto = Math.floor((Date.now() - tempoInicio) / 1000);
       const total = perguntas.length;
       const porcentagem = (acertos / total) * 100;
       const statusEl = document.getElementById('status');
       const quizEl = document.getElementById('quiz');
       quizEl.classList.add('hidden');
+
+      // Salvar no ranking (localStorage)
+      const novoRegistro = {
+        apelido: apelido,
+        fase: faseNumero,
+        porcentagem: porcentagem,
+        tempo: tempoGasto,
+        data: new Date().toLocaleString()
+      };
+
+      const ranking = JSON.parse(localStorage.getItem('rankingMSA') || '[]');
+      ranking.push(novoRegistro);
+      localStorage.setItem('rankingMSA', JSON.stringify(ranking));
+
       if (porcentagem >= 90) {
-        statusEl.innerHTML = `✅ Parabéns! Você acertou ${acertos}/${total} e passou de fase!<br>Carregando próxima fase...`;
+        localStorage.setItem('faseAtualMSA', faseNumero + 1); // desbloqueia a próxima fase
+        statusEl.innerHTML = `✅ Parabéns ${apelido}! Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%)<br>Avançando para a próxima fase...`;
         setTimeout(() => {
           window.close();
-          window.open('fase2.html', 'Fase2', 'width=800,height=600');
+          window.open('fase2.html', '_blank', 'width=800,height=600');
         }, 3000);
       } else {
         statusEl.innerHTML = `❌ Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%).<br>Você precisa tentar novamente.`;
