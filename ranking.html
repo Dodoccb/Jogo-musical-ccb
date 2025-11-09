@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ranking dos Jogadores</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #f0faff;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    table {
+      width: 100%;
+      max-width: 700px;
+      margin: auto;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+    }
+    th {
+      background-color: #ffe680;
+    }
+    .icone {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏆 Ranking dos Jogadores</h1>
+  <div id="tabela-container">Carregando...</div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("tabela-container");
+      const ranking = JSON.parse(localStorage.getItem("rankingMSA") || "[]");
+
+      if (!ranking.length) {
+        container.innerHTML = "<p>Nenhum registro ainda! Jogue para entrar no ranking. 🎮</p>";
+        return;
+      }
+
+      // Ordena: maior fase, maior % acerto, menor tempo
+      ranking.sort((a, b) => {
+        if (b.fase !== a.fase) return b.fase - a.fase;
+        if (b.porcentagem !== a.porcentagem) return b.porcentagem - a.porcentagem;
+        return a.tempo - b.tempo;
+      });
+
+      const top7 = ranking.slice(0, 7);
+      const icones = ["🥇", "🥈", "🥉", "🏅", "🎖️", "⭐", "🔹"];
+
+      let tabela = `
+        <table>
+          <thead>
+            <tr>
+              <th>Posição</th>
+              <th>Apelido</th>
+              <th>Fase</th>
+              <th>% Acerto</th>
+              <th>Tempo (s)</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+      `;
+
+      top7.forEach((jogador, i) => {
+        tabela += `
+          <tr>
+            <td class="icone">${icones[i] || ""}</td>
+            <td>${jogador.apelido}</td>
+            <td>${jogador.fase}</td>
+            <td>${jogador.porcentagem.toFixed(1)}%</td>
+            <td>${jogador.tempo}s</td>
+            <td>${jogador.data}</td>
+          </tr>
+        `;
+      });
+
+      tabela += "</tbody></table>";
+      container.innerHTML = tabela;
+    });
+  </script>
+</body>
+</html>
+
+
