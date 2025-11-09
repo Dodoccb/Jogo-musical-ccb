@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -45,7 +44,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>🎵 Fase 4</h1>
+    <h1>🎵 Fase 4 – Compassos e fórmulas de compasso</h1>
     <div id="quiz">
       <div id="pergunta" class="pergunta">Carregando pergunta...</div>
       <div class="opcoes" id="opcoes"></div>
@@ -58,6 +57,7 @@
     let fase = "Fase 4 – Compassos e fórmulas de compasso";
     let index = 0;
     let acertos = 0;
+    const inicio = performance.now(); // ⏱️ cronômetro
 
     async function carregarPerguntas() {
       const res = await fetch('perguntas.json');
@@ -115,12 +115,26 @@
       const porcentagem = (acertos / total) * 100;
       const statusEl = document.getElementById('status');
       const quizEl = document.getElementById('quiz');
+      const tempo = Math.round((performance.now() - inicio) / 1000);
+      const data = new Date().toLocaleString();
+      const apelido = localStorage.getItem("apelido") || "Desconhecido";
+
       quizEl.classList.add('hidden');
+
       if (porcentagem >= 90) {
-        statusEl.innerHTML = `✅ Parabéns! Você acertou ${acertos}/${total} e passou de fase!<br>Carregando próxima fase...`;
+        // 🔐 Salvar progresso e ranking
+        const jogador = { apelido, fase: 5, porcentagem, tempo, data };
+        localStorage.setItem("jogador", JSON.stringify(jogador));
+
+        const ranking = JSON.parse(localStorage.getItem("rankingMSA") || "[]");
+        ranking.push(jogador);
+        localStorage.setItem("rankingMSA", JSON.stringify(ranking));
+
+        statusEl.innerHTML = `✅ Parabéns, ${apelido}! Você acertou ${acertos}/${total} e passou de fase!<br>Carregando próxima fase...`;
+
         setTimeout(() => {
           window.close();
-          window.open('fase5.html', 'Fase3', 'width=800,height=600');
+          window.open('fase5.html', 'Fase5', 'width=800,height=600');
         }, 3000);
       } else {
         statusEl.innerHTML = `❌ Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%).<br>Você precisa tentar novamente.`;
@@ -132,3 +146,5 @@
   </script>
 </body>
 </html>
+
+
