@@ -143,12 +143,30 @@
       localStorage.setItem('rankingMSA', JSON.stringify(ranking));
 
       if (porcentagem >= 90) {
-        localStorage.setItem('faseAtualMSA', faseNumero + 1); // desbloqueia a próxima fase
-        statusEl.innerHTML = `✅ Parabéns ${apelido}! Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%)<br>Avançando para a próxima fase...`;
-        setTimeout(() => {
-          window.close();
-          window.open('fase2.html', '_blank', 'width=800,height=600');
-        }, 3000);
+  const apelido = localStorage.getItem("apelido") || "Desconhecido";
+  const tempo = Math.round(performance.now() / 1000);
+  const data = new Date().toLocaleString();
+
+  // Salvar progresso
+  localStorage.setItem("jogador", JSON.stringify({
+    apelido,
+    fase: 2,
+    porcentagem,
+    tempo,
+    data
+  }));
+
+  // Atualiza ranking
+  const ranking = JSON.parse(localStorage.getItem("rankingMSA") || "[]");
+  ranking.push({ apelido, fase: 2, porcentagem, tempo, data });
+  localStorage.setItem("rankingMSA", JSON.stringify(ranking));
+
+  statusEl.innerHTML = `✅ Parabéns! Você acertou ${acertos}/${total} e passou de fase!<br>Carregando próxima fase...`;
+  setTimeout(() => {
+    window.close();
+    window.open('fase2.html', 'Fase2', 'width=800,height=600');
+  }, 3000);
+
       } else {
         statusEl.innerHTML = `❌ Você acertou ${acertos}/${total} (${porcentagem.toFixed(1)}%).<br>Você precisa tentar novamente.`;
         setTimeout(() => window.close(), 4000);

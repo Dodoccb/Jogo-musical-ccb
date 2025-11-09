@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -46,13 +45,13 @@
       animation: pulse 1.5s infinite;
     }
     .ranking-button {
-      background: #3b83ff;
+      background: #2979ff;
       color: white;
       font-weight: bold;
-      font-size: 1rem;
+      font-size: 1.1rem;
       border-radius: 10px;
       border: none;
-      padding: 0.7rem 1.2rem;
+      padding: 0.7rem 1rem;
     }
     @keyframes pulse {
       0% { transform: scale(1); }
@@ -108,16 +107,20 @@
       margin-top: 5px;
       color: #888;
     }
-    #nickname-container {
+    .apelido-box {
       text-align: center;
       margin-top: 1rem;
     }
-    #nickname {
-      font-size: 1rem;
+    .apelido-box input {
       padding: 0.5rem;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      width: 200px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #888;
+    }
+    .apelido-box button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      margin-left: 1rem;
     }
 
     @media (max-width: 600px) {
@@ -155,111 +158,143 @@
       }
     }
   </style>
-  <script>
-    function openGamePopup() {
-      const nickname = document.getElementById("nickname").value.trim();
-      if (!nickname) {
-        alert("Digite seu apelido antes de jogar.");
-        return;
-      }
-      localStorage.setItem("apelido", nickname);
-      const audio = document.getElementById("audioFundo");
-      if (audio && !audio.paused) audio.pause();
-
-      const ultimaFase = localStorage.getItem("faseAtual") || "fase1.html";
-      const popup = window.open(ultimaFase, "JogoMusical", "width=600,height=600");
-
-      const checkPopupClosed = setInterval(() => {
-        if (popup.closed) {
-          clearInterval(checkPopupClosed);
-          audio.play();
-        }
-      }, 500);
-    }
-
-    function showSection(id) {
-      document.querySelectorAll("section").forEach(sec => sec.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const audio = document.getElementById("audioFundo");
-      const buttons = document.querySelectorAll("button");
-      buttons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          if (audio && audio.paused) {
-            audio.play().catch(e => console.log("Autoplay bloqueado:", e));
-          }
-        });
-      });
-
-      const apelido = localStorage.getItem("apelido");
-      if (apelido) document.getElementById("nickname").value = apelido;
-    });
-  </script>
 </head>
-
 <body>
-  <audio id="audioFundo" loop>
-    <source src="hino001.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
+<audio id="audioFundo" loop>
+  <source src="hino001.mp3" type="audio/mpeg">
+  Seu navegador não suporta áudio.
+</audio>
 
-  <header>🎵 Teoria Musical Divertida 🎵</header>
+<header>🎵 Teoria Musical Divertida 🎵</header>
 
-  <nav>
-    <button onclick="showSection('figuras')">Figuras Musicais</button>
-    <button onclick="showSection('claves')">Claves Musicais</button>
-    <button onclick="showSection('notas')">Notas Musicais</button>
-    <button class="play-button" onclick="openGamePopup()">🎮 JOGAR</button>
-    <button class="ranking-button" onclick="window.open('ranking.html','_blank')">📊 RANKING</button>
-  </nav>
+<nav>
+  <button onclick="showSection('figuras')">Figuras Musicais</button>
+  <button onclick="showSection('claves')">Claves Musicais</button>
+  <button onclick="showSection('notas')">Notas Musicais</button>
+  <button class="play-button" onclick="openGamePopup()">🎮 JOGAR</button>
+  <button class="ranking-button" onclick="window.location.href='ranking.html'">📊 RANKING</button>
+</nav>
 
-  <div id="nickname-container">
-    <label for="nickname">Digite seu apelido:</label><br />
-    <input type="text" id="nickname" placeholder="Ex: Dodô" />
+<div class="apelido-box">
+  <label>Apelido: </label>
+  <input type="text" id="apelido" placeholder="Digite seu apelido..." />
+  <button id="salvarApelidoBtn" onclick="salvarApelido()">Salvar</button>
+</div>
+
+<section id="figuras" class="active">
+  <h2>Figuras Musicais</h2>
+  <p>A duração do som, a duração do silêncio e o ritmo musical são escritos com figuras musicais.</p>
+  <p><strong>Nota musical</strong> é a figura que representa o som.<br>
+  <strong>Pausa musical</strong> é a figura que representa o silêncio.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Figura de Som</th>
+        <th>Nome</th>
+        <th>Figura de Silêncio</th>
+        <th>Nome</th>
+        <th>Número de Equivalência</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-size: 2rem;">𝅝</td><td>Semibreve</td><td style="font-size: 2rem;">▇</td><td>Pausa de Semibreve</td><td>1</td></tr>
+      <tr><td style="font-size: 2rem;">𝅗𝅥</td><td>Mínima</td><td style="font-size: 2rem;">▂</td><td>Pausa de Mínima</td><td>2</td></tr>
+      <tr><td style="font-size: 2rem;">𝅘𝅥</td><td>Semínima</td><td style="font-size: 2rem;">𝄽</td><td>Pausa de Semínima</td><td>4</td></tr>
+      <tr><td style="font-size: 2rem;">𝅘𝅥𝅮</td><td>Colcheia</td><td style="font-size: 2rem;">𝄾</td><td>Pausa de Colcheia</td><td>8</td></tr>
+      <tr><td style="font-size: 2rem;">𝅘𝅥𝅯</td><td>Semicolcheia</td><td style="font-size: 2rem;">𝄿</td><td>Pausa de Semicolcheia</td><td>16</td></tr>
+      <tr><td style="font-size: 2rem;">𝅘𝅥𝅰</td><td>Fusa</td><td style="font-size: 2rem;">𝅀</td><td>Pausa de Fusa</td><td>32</td></tr>
+      <tr><td style="font-size: 2rem;">𝅘𝅥𝅱</td><td>Semifusa</td><td style="font-size: 2rem;">𝅁</td><td>Pausa de Semifusa</td><td>64</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="claves">
+  <h2>Claves Musicais</h2>
+  <p>As claves ajudam a identificar as notas no pentagrama. A mais usada é a Clave de Sol.</p>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Gclef.svg" width="80" alt="Clave de Sol">
+</section>
+
+<section id="notas">
+  <h2>Notas Musicais</h2>
+  <ul>
+    <li>Dó – dominó 🎲</li>
+    <li>Ré – régua 📏</li>
+    <li>Mi – gato "Miau" 🐱</li>
+    <li>Fá – faca 🍴</li>
+    <li>Sol – sol ☀️</li>
+    <li>Lá – laço 🎀</li>
+    <li>Si – sino 🔔</li>
+  </ul>
+</section>
+
+<section id="jogo">
+  <h2>🗺️ Mapa do Jogo – Fases do Método MSA</h2>
+  <div class="map-container">
+    <div class="fase" style="top: 20%; left: 30%;">
+      <button>🎵</button><div class="cadeado">🔒</div>
+    </div>
+    <div class="fase" style="top: 63%; left: 40%;">
+      <button>🎵</button><div class="cadeado">🔒</div>
+    </div>
+    <div class="fase" style="top: 48%; left: 59%;">
+      <button>🎵</button><div class="cadeado">🔒</div>
+    </div>
+    <div class="fase" style="top: 34%; left: 45%;">
+      <button>🎵</button><div class="cadeado">🔒</div>
+    </div>
+    <div class="fase" style="top: 19%; left: 62%;">
+      <button>🎵</button><div class="cadeado">🔒</div>
+    </div>
   </div>
+</section>
 
-  <section id="figuras" class="active">
-    <h2>Figuras Musicais</h2>
-    <p>A duração do som, a duração do silêncio e o ritmo musical são escritos com figuras musicais.</p>
-    <p><strong>Nota musical</strong> é a figura que representa o som.<br>
-       <strong>Pausa musical</strong> é a figura que representa o silêncio.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Figura de Som</th><th>Nome</th><th>Figura de Silêncio</th><th>Nome</th><th>Número de Equivalência</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td style="font-size: 2rem;">𝅝</td><td>Semibreve</td><td style="font-size: 2rem;">▇</td><td>Pausa de Semibreve</td><td>1</td></tr>
-        <tr><td style="font-size: 2rem;">𝅗𝅥</td><td>Mínima</td><td style="font-size: 2rem;">▂</td><td>Pausa de Mínima</td><td>2</td></tr>
-        <tr><td style="font-size: 2rem;">𝅘𝅥</td><td>Semínima</td><td style="font-size: 2rem;">𝄽</td><td>Pausa de Semínima</td><td>4</td></tr>
-        <tr><td style="font-size: 2rem;">𝅘𝅥𝅮</td><td>Colcheia</td><td style="font-size: 2rem;">𝄾</td><td>Pausa de Colcheia</td><td>8</td></tr>
-        <tr><td style="font-size: 2rem;">𝅘𝅥𝅯</td><td>Semicolcheia</td><td style="font-size: 2rem;">𝄿</td><td>Pausa de Semicolcheia</td><td>16</td></tr>
-        <tr><td style="font-size: 2rem;">𝅘𝅥𝅰</td><td>Fusa</td><td style="font-size: 2rem;">𝅀</td><td>Pausa de Fusa</td><td>32</td></tr>
-        <tr><td style="font-size: 2rem;">𝅘𝅥𝅱</td><td>Semifusa</td><td style="font-size: 2rem;">𝅁</td><td>Pausa de Semifusa</td><td>64</td></tr>
-      </tbody>
-    </table>
-  </section>
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
 
-  <section id="claves">
-    <h2>Claves Musicais</h2>
-    <p>As claves ajudam a identificar as notas no pentagrama. A mais usada é a Clave de Sol.</p>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Gclef.svg" width="80" alt="Clave de Sol" />
-  </section>
+  function salvarApelido() {
+    const nome = document.getElementById("apelido").value.trim();
+    if (nome.length < 2) return alert("Digite um apelido válido.");
+    localStorage.setItem("apelido", nome);
+    document.getElementById("apelido").disabled = true;
+    document.getElementById("salvarApelidoBtn").disabled = true;
+  }
 
-  <section id="notas">
-    <h2>Notas Musicais</h2>
-    <ul>
-      <li>Dó – dominó 🎲</li>
-      <li>Ré – régua 📏</li>
-      <li>Mi – gato "Miau" 🐱</li>
-      <li>Fá – faca 🍴</li>
-      <li>Sol – sol ☀️</li>
-      <li>Lá – laço 🎀</li>
-      <li>Si – sino 🔔</li>
-    </ul>
-  </section>
+  function openGamePopup() {
+    const audio = document.getElementById("audioFundo");
+    if (audio && !audio.paused) audio.pause();
+
+    let dados = JSON.parse(localStorage.getItem("jogador")) || {};
+    let fase = dados.fase || 1;
+    const popup = window.open(`fase${fase}.html`, "_blank", "width=600,height=600");
+
+    const checkPopupClosed = setInterval(() => {
+      if (popup.closed) {
+        clearInterval(checkPopupClosed);
+        audio.play();
+      }
+    }, 500);
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const audio = document.getElementById("audioFundo");
+    document.querySelectorAll("button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (audio && audio.paused) {
+          audio.play().catch(e => console.log("Autoplay bloqueado:", e));
+        }
+      });
+    });
+
+    const apelido = localStorage.getItem("apelido");
+    if (apelido) {
+      document.getElementById("apelido").value = apelido;
+      document.getElementById("apelido").disabled = true;
+      document.getElementById("salvarApelidoBtn").disabled = true;
+    }
+  });
+</script>
 </body>
 </html>
